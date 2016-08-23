@@ -9,6 +9,9 @@ namespace Mrozik.Nebraska.Models.AccountViewModels
     public class RegisterViewModel
     {
         [Required]
+        public string Username { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
