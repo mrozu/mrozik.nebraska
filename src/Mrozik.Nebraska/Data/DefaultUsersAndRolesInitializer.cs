@@ -26,15 +26,15 @@ namespace Mrozik.Nebraska.Data
             await CreateRoleIfNotExists(ApplicationRoles.Role2);
             await CreateRoleIfNotExists(ApplicationRoles.Role3);
 
-            await CreateAdminUserIfNotExist("admin");
+            await CreateAdminUserIfNotExist("admin", "12");
         }
 
-        private async Task CreateAdminUserIfNotExist(string username)
+        private async Task CreateAdminUserIfNotExist(string username, string password)
         {
             if (await _userManager.FindByNameAsync(username) == null)
             {
                 var adminUser = CreateAdminUser(username);
-                var result = await _userManager.CreateAsync(adminUser, "Mrozu12!");
+                var result = await _userManager.CreateAsync(adminUser, password);
                 if (!result.Succeeded)
                     throw new InvalidOperationException(
                         $"Error while creating user: {adminUser.UserName}. Details: {result}");

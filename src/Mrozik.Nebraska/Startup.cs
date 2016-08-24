@@ -52,12 +52,28 @@ namespace Mrozik.Nebraska
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, ApplicationRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+                        .AddEntityFrameworkStores<ApplicationDbContext>()
+                        .AddDefaultTokenProviders();
+
+#if DEBUG
+            EnableWeekPasswords(services);
+#endif
 
             services.AddMvc();
 
             return BuildAutofacContainer(services);
+        }
+
+        private static void EnableWeekPasswords(IServiceCollection services)
+        {
+            services.Configure<IdentityOptions>(o =>
+            {
+                o.Password.RequireDigit = false;
+                o.Password.RequireLowercase = false;
+                o.Password.RequireNonAlphanumeric = false;
+                o.Password.RequireUppercase = false;
+                o.Password.RequiredLength = 0;
+            });
         }
 
         private IServiceProvider BuildAutofacContainer(IServiceCollection services)
