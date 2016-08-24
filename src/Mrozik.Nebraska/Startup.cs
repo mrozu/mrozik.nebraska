@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Autofac;
+using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,7 +13,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Mrozik.Nebraska.Data;
 using Mrozik.Nebraska.Models;
-using Mrozik.Nebraska.Services;
 
 namespace Mrozik.Nebraska
 {
@@ -49,21 +51,26 @@ namespace Mrozik.Nebraska
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
 
+            return BuildAutofacContainer(services);
+        }
+
+        private IServiceProvider BuildAutofacContainer(IServiceCollection services)
+        {
             var builder = new ContainerBuilder();
-            builder.RegisterType<AuthMessageSender>().As<IEmailSender>();
             builder.Populate(services);
+            builder.RegisterModule<DependenciesRegistration>();
             _container = builder.Build();
             return new AutofacServiceProvider(_container);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IApplicationLifetime appLifetime)
+        public async void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IApplicationLifetime appLifetime)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -87,8 +94,6 @@ namespace Mrozik.Nebraska
 
             app.UseIdentity();
 
-            // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -96,8 +101,19 @@ namespace Mrozik.Nebraska
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
+            await StartAsyncStartableComponents();
+
 
             appLifetime.ApplicationStopped.Register(() => _container.Dispose());
+        }
+
+        private async Task StartAsyncStartableComponents()
+        {
+            foreach (var startable in _container.ComponentRegistry.RegistrationsFor(new TypedService(typeof(IAsyncStartable))))
+            {
+                var instance = (IAsyncStartable)_container.ResolveComponent(startable, Enumerable.Empty<Parameter>());
+                await instance.StartAsync();
+            }
         }
     }
 }
