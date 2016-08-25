@@ -50,6 +50,9 @@ namespace Mrozik.Nebraska.Data
 
         private async Task AssignToRole(ApplicationUser user, string roleName)
         {
+            if (await _userManager.IsInRoleAsync(user, roleName))
+                return;
+
             var result = await _userManager.AddToRoleAsync(user, roleName);
             if (!result.Succeeded)
                 throw new InvalidOperationException($"Error while assinging user: {user.UserName} to {roleName} role. Details: {result}");

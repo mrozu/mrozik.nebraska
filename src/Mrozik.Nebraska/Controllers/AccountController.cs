@@ -12,7 +12,6 @@ using Mrozik.Nebraska.Services;
 
 namespace Mrozik.Nebraska.Controllers
 {
-    [Authorize]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -83,7 +82,6 @@ namespace Mrozik.Nebraska.Controllers
         //
         // GET: /Account/Register
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -93,7 +91,6 @@ namespace Mrozik.Nebraska.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {

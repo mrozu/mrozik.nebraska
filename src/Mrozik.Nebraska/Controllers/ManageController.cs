@@ -9,7 +9,6 @@ using Mrozik.Nebraska.Models.ManageViewModels;
 
 namespace Mrozik.Nebraska.Controllers
 {
-    [Authorize]
     public class ManageController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
