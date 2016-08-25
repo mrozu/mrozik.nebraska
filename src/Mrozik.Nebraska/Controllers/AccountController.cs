@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Mrozik.Nebraska.Models;
 using Mrozik.Nebraska.Models.AccountViewModels;
+using Mrozik.Nebraska.Models.Identity;
 using Mrozik.Nebraska.Services;
 
 namespace Mrozik.Nebraska.Controllers

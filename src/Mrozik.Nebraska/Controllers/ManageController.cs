@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Mrozik.Nebraska.Models;
+using Mrozik.Nebraska.Models.Identity;
 using Mrozik.Nebraska.Models.ManageViewModels;
 
 namespace Mrozik.Nebraska.Controllers

@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Mrozik.Nebraska.Data;
 using Mrozik.Nebraska.Models;
+using Mrozik.Nebraska.Models.Identity;
 
 namespace Mrozik.Nebraska
 {

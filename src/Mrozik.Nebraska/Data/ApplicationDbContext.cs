@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Mrozik.Nebraska.Models;
+using Mrozik.Nebraska.Models.Identity;
 
 namespace Mrozik.Nebraska.Data
 {
