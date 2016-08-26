@@ -70,6 +70,11 @@ namespace Mrozik.Nebraska
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(AuthorizationPolicies.CanRegisterNewUser, p => p.RequireClaim(ApplicationClaims.CanRegisterNewUser));
+            });
+
             return BuildAutofacContainer(services);
         }
 

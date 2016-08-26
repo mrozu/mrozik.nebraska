@@ -1,7 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Authorization;
 @using Mrozik.Nebraska.Models
 @using Mrozik.Nebraska.Models.Identity
 @inject UserManager<ApplicationUser> UserManager
+@inject IAuthorizationService AuthorizationService;
 
 <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
     <ul class="nav navbar-nav navbar-right">
@@ -14,5 +16,8 @@
     </ul>
 </form>
 <ul class="nav navbar-nav navbar-right">
-    <li><a asp-area="" asp-controller="Account" asp-action="Register">Register new user</a></li>
-</ul>
+    @if (await AuthorizationService.AuthorizeAsync(User, AuthorizationPolicies.CanRegisterNewUser))
+    {
+        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register new user</a></li>
+    }
+    </ul>
