@@ -24,6 +24,10 @@
 </div>
 <div class="container body-content">
     @RenderBody()
+
+    @section Scripts{
+        @RenderSection("Scripts",false)
+    }
     <hr />
     <footer>
         <p>&copy; 2016 - Mrozik.Nebraska</p>

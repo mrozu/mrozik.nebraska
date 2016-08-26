@@ -82,6 +82,7 @@ namespace Mrozik.Nebraska.Controllers
         //
         // GET: /Account/Register
         [HttpGet]
+        [Authorize(Roles = ApplicationRoles.Administrator)]
         public IActionResult Register(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -92,6 +93,7 @@ namespace Mrozik.Nebraska.Controllers
         // POST: /Account/Register
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = ApplicationRoles.Administrator)]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -107,9 +109,8 @@ namespace Mrozik.Nebraska.Controllers
                     //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
                     //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
                     //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
-                    await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction(nameof(HomeController.Index), "Home");
                 }
                 AddErrors(result);
             }
