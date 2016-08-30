@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Mrozik.Nebraska.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160830085159_CreateIdentitySchema")]
+    [Migration("20160830142011_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,7 +31,7 @@ namespace Mrozik.Nebraska.Data.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetRoleClaims");
+                    b.ToTable("RoleClaims","dbo");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserClaim<int>", b =>
@@ -49,7 +49,7 @@ namespace Mrozik.Nebraska.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserClaims");
+                    b.ToTable("UserClaims","dbo");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserLogin<int>", b =>
@@ -66,7 +66,7 @@ namespace Mrozik.Nebraska.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserLogins");
+                    b.ToTable("UserLogins","dbo");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserRole<int>", b =>
@@ -81,7 +81,7 @@ namespace Mrozik.Nebraska.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserRoles");
+                    b.ToTable("UserRoles","dbo");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserToken<int>", b =>
@@ -96,7 +96,7 @@ namespace Mrozik.Nebraska.Data.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("AspNetUserTokens");
+                    b.ToTable("UserTokens","dbo");
                 });
 
             modelBuilder.Entity("Mrozik.Nebraska.Models.Identity.ApplicationRole", b =>
@@ -118,7 +118,7 @@ namespace Mrozik.Nebraska.Data.Migrations
                     b.HasIndex("NormalizedName")
                         .HasName("RoleNameIndex");
 
-                    b.ToTable("AspNetRoles");
+                    b.ToTable("Roles","dbo");
                 });
 
             modelBuilder.Entity("Mrozik.Nebraska.Models.Identity.ApplicationUser", b =>
@@ -168,7 +168,7 @@ namespace Mrozik.Nebraska.Data.Migrations
                         .IsUnique()
                         .HasName("UserNameIndex");
 
-                    b.ToTable("AspNetUsers");
+                    b.ToTable("Users","dbo");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<int>", b =>
