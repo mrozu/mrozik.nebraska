@@ -2,14 +2,15 @@
 
 namespace Mrozik.Nebraska.Models.Identity
 {
-    public class ApplicationRole : IdentityRole
+    public class ApplicationRole : IdentityRole<int>
     {
         public ApplicationRole()
         {
         }
 
-        public ApplicationRole(string roleName) : base(roleName)
+        public ApplicationRole(string roleName)
         {
+            Name = roleName;
         }
     }
 }

@@ -55,7 +55,7 @@ namespace Mrozik.Nebraska
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, ApplicationRole>()
-                        .AddEntityFrameworkStores<ApplicationDbContext>()
+                        .AddEntityFrameworkStores<ApplicationDbContext, int>()
                         .AddDefaultTokenProviders();
 
 #if DEBUG
