@@ -16,6 +16,13 @@ namespace Mrozik.Nebraska.Models.AccountViewModels
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+
+        public IList<string> AvailableRoleNames { get; set; }
+
+        [Required]
+        [Display(Name = "Role")]
+        public string RoleName { get; set; }
+
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 2)]
         [DataType(DataType.Password)]
@@ -27,4 +34,5 @@ namespace Mrozik.Nebraska.Models.AccountViewModels
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
+
 }
