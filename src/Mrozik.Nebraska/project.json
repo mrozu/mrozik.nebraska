@@ -44,8 +44,8 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "Autofac.Extensions.DependencyInjection": "4.0.0"
-  },
+    "Autofac.Extensions.DependencyInjection": "4.0.0",
+    "System.Linq.Dynamic.Core": "1.0.5.4" },
 
   "tools": {
     "BundlerMinifier.Core": "2.0.238",

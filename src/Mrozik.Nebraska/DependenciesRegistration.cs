@@ -10,6 +10,8 @@ namespace Mrozik.Nebraska
         {
             builder.RegisterType<AuthMessageSender>().As<IEmailSender>();
             builder.RegisterType<DefaultUsersAndRolesInitializer>().As<IAsyncStartable>();
+
+            builder.RegisterType<MockDatabase>().SingleInstance();
         }
     }
 }
