@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Mrozik.Nebraska.Data;
+using Mrozik.Nebraska.Infrastructure;
 using Mrozik.Nebraska.Models;
 using Mrozik.Nebraska.Models.Identity;
 
@@ -94,7 +95,7 @@ namespace Mrozik.Nebraska
         {
             var builder = new ContainerBuilder();
             builder.Populate(services);
-            builder.RegisterModule<DependenciesRegistration>();
+            builder.RegisterModule<DependenciesRegistry>();
             _container = builder.Build();
             return new AutofacServiceProvider(_container);
         }

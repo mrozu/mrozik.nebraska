@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Autofac;
 using Microsoft.AspNetCore.Identity;
+using Mrozik.Nebraska.Infrastructure;
 using Mrozik.Nebraska.Models;
 using Mrozik.Nebraska.Models.Identity;
 

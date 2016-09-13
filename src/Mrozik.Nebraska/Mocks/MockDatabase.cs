@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Mrozik.Nebraska.Models;
 
-namespace Mrozik.Nebraska
+namespace Mrozik.Nebraska.Mocks
 {
     public class MockDatabase
     {

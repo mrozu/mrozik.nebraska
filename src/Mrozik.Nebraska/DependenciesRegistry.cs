@@ -1,10 +1,12 @@
 using Autofac;
 using Mrozik.Nebraska.Data;
+using Mrozik.Nebraska.Infrastructure;
+using Mrozik.Nebraska.Mocks;
 using Mrozik.Nebraska.Services;
 
 namespace Mrozik.Nebraska
 {
-    public class DependenciesRegistration : Module
+    public class DependenciesRegistry : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
