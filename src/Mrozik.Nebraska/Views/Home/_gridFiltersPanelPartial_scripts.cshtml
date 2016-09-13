@@ -1,0 +1,16 @@
+﻿<script>
+    var toDate= new Date();
+    var fromDate = new Date();
+    fromDate.setMonth(fromDate.getMonth() - 1);
+
+    $('#fromDateTimePicker').datetimepicker({
+        format: 'YYYY-MM-DD',
+        defaultDate:fromDate
+    });
+    $('#toDateTimePicker').datetimepicker({
+        format: 'YYYY-MM-DD',
+        defaultDate:toDate
+    });
+
+
+</script>

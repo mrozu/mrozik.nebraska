@@ -85,3 +85,19 @@ textarea {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+
+.filters-panel .control-label {
+    text-align: left;
+}
+
+
+.filters-panel #searchInputBox {
+    max-width: 100%;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}

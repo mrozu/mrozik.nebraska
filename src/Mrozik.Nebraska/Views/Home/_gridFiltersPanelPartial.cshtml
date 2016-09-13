@@ -1,0 +1,92 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default filters-panel">
+            <div class="panel-heading">Filters</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-10 vcenter">
+                        <div class="row form-horizontal">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Start date</label>
+                                    <div class="col-sm-8">
+                                        <div class='input-group date' id='fromDateTimePicker'>
+                                            <input id="filtersStartDate" type='text' class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">End date</label>
+                                    <div class="col-sm-8">
+                                        <div class='input-group date' id='toDateTimePicker'>
+                                            <input id="filtersEndDate" type='text' class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-horizontal">
+                            <div class="col-xs-4">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Progress</label>
+                                    <div class="col-sm-8">
+                                        <select id="filtersOrderStatus" class="form-control">
+                                            <option value="all">all</option>
+                                            <option value="inProgress">in progress</option>
+                                            <option value="done">done</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Scans</label>
+                                    <div class="col-sm-8">
+                                        <select id="filtersScansAvailability" class="form-control">
+                                            <option value="all">all</option>
+                                            <option value="with">with scans</option>
+                                            <option value="without">without scans</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Department</label>
+                                    <div class="col-sm-8">
+                                        <select id="filtersDepartment" class="form-control">
+                                            <option value="all">all</option>
+                                            <option value="embroidery">embroidery</option>
+                                            <option value="sieve">sieve</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-horizontal">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Search</label>
+                                    <div class="col-sm-10">
+                                        <input id="filtersSearch" type='text' class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 vcenter">
+                        <a href="#" id="filtersDoSearch" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-search"></span> Search</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
