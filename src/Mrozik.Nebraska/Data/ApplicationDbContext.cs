@@ -1,12 +1,17 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Mrozik.Nebraska.Models;
 using Mrozik.Nebraska.Models.Identity;
 
 namespace Mrozik.Nebraska.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public IQueryable<Order> Orders => Set<Order>().AsNoTracking();
+        public IQueryable<Department> Departments => Set<Department>().AsNoTracking();
+
+        public ApplicationDbContext(DbContextOptions options)
             : base(options)
         {
         }
@@ -14,14 +19,16 @@ namespace Mrozik.Nebraska.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<ApplicationUser>().ToTable("Users", "dbo");
-            builder.Entity<ApplicationRole>().ToTable("Roles", "dbo");
-            builder.Entity<IdentityUserRole<int>>().ToTable("UserRoles", "dbo");
-            builder.Entity<IdentityUserLogin<int>>().ToTable("UserLogins", "dbo");
-            builder.Entity<IdentityUserClaim<int>>().ToTable("UserClaims", "dbo");
-            builder.Entity<IdentityUserToken<int>>().ToTable("UserTokens", "dbo");
-            builder.Entity<IdentityRoleClaim<int>>().ToTable("RoleClaims", "dbo");
+            builder.Entity<ApplicationUser>().ToTable("Users");
+            builder.Entity<ApplicationRole>().ToTable("Roles");
+            builder.Entity<IdentityUserRole<int>>().ToTable("UserRoles");
+            builder.Entity<IdentityUserLogin<int>>().ToTable("UserLogins");
+            builder.Entity<IdentityUserClaim<int>>().ToTable("UserClaims");
+            builder.Entity<IdentityUserToken<int>>().ToTable("UserTokens");
+            builder.Entity<IdentityRoleClaim<int>>().ToTable("RoleClaims");
 
+            builder.Entity<Order>().ToTable("Orders");
+            builder.Entity<Department>().ToTable("Departments");
         }
     }
 }
