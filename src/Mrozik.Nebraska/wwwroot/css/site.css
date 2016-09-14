@@ -101,3 +101,11 @@ textarea {
     vertical-align: middle;
     float: none;
 }
+
+#ordersGrid tbody tr {
+    cursor: pointer;
+}
+
+#ordersGrid tbody tr:hover {
+    background: #87ceff;
+}
