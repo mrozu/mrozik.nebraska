@@ -8,9 +8,10 @@ using Mrozik.Nebraska.Data;
 namespace Mrozik.Nebraska.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160914185745_Orders and Departments mapping")]
+    partial class OrdersandDepartmentsmapping
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -137,7 +138,8 @@ namespace Mrozik.Nebraska.Data.Migrations
 
             modelBuilder.Entity("Mrozik.Nebraska.Models.Identity.ApplicationUser", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("AccessFailedCount");
 
@@ -186,7 +188,8 @@ namespace Mrozik.Nebraska.Data.Migrations
 
             modelBuilder.Entity("Mrozik.Nebraska.Models.Order", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Amount");
 
